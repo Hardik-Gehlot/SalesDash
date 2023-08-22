@@ -10,8 +10,10 @@ import { config } from './config/config';
 
 
 //? data imports for importing data into database
-// import User from 'models/User';
-// import { dataUser } from 'data';
+import User from './models/User';
+import Product from './models/Product';
+import ProductStat from './models/ProductStat';
+import { dataUser, dataProduct, dataProductStat } from './data';
 
 //! configuration
 const app = express();
@@ -33,12 +35,14 @@ mongoose.connect(config.mongo.url)
         app.listen(config.server.port, () => {
             console.log("🚀 server listening on port:➡", config.server.port);
             // User.insertMany(dataUser); Inserting data into database
+            // Product.insertMany(dataProduct).then(()=>{
+            //     console.log("💥 Products inserted successfully");
+            // }).catch(e=> console.log("❌ error"));
+            // ProductStat.insertMany(dataProductStat).then(()=>{
+            //     console.log("💥 ProductsStat inserted successfully");
+            // }).catch(e=> console.log("❌ error"));
         });
     })
     .catch((error) => {
         console.error('Error connecting to MongoDB:', error);
     });
-
-// app.use("/", (req, res) => {
-//     res.send("<h1>Welcome! 😉</h1>");
-// })
