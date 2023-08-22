@@ -7,6 +7,12 @@ import morgan from 'morgan';
 import routes from './routes/index';
 import { config } from './config/config';
 
+
+
+//? data imports for importing data into database
+// import User from 'models/User';
+// import { dataUser } from 'data';
+
 //! configuration
 const app = express();
 app.use(express.json());
@@ -24,15 +30,15 @@ app.use('/api', routes);
 mongoose.Promise = Promise;
 mongoose.connect(config.mongo.url)
     .then(() => {
-        console.log('Connected to MongoDB');
+        app.listen(config.server.port, () => {
+            console.log("🚀 server listening on port:➡", config.server.port);
+            // User.insertMany(dataUser); Inserting data into database
+        });
     })
     .catch((error) => {
         console.error('Error connecting to MongoDB:', error);
     });
 
-app.use("/", (req, res) => {
-    res.send("<h1>Welcome! 😉</h1>");
-})
-app.listen(config.server.port, () => {
-    console.log("🚀 server listening on port:➡", config.server.port);
-});
+// app.use("/", (req, res) => {
+//     res.send("<h1>Welcome! 😉</h1>");
+// })

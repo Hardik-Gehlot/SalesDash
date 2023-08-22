@@ -1,8 +1,7 @@
 import express,{Request,Response,NextFunction,Router} from 'express';
+import { getUser } from "../controllers/General";
 
 const generalRoutes:Router = express.Router();
 
-generalRoutes.get('/', (req:Request, res:Response, next:NextFunction) => {
-  res.send('<h1>General Route 👨</h1>');
-});
+generalRoutes.get('/user/:id', getUser);
 export default generalRoutes;

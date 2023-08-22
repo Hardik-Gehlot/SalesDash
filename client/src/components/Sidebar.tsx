@@ -15,6 +15,7 @@ import profileImage from '../assests/profile.jpg'
 import { text } from 'stream/consumers';
 
 interface SidebarProps {
+    user: User,
     isNonMobile: boolean;
     drawerWidth: string;
     isSidebarOpen: boolean;
@@ -86,7 +87,7 @@ const navItems: NavItem[] = [
 ]
 
 const Sidebar: React.FC<SidebarProps> = ({
-    drawerWidth, isSidebarOpen, setIsSidebarOpen, isNonMobile
+    user, drawerWidth, isSidebarOpen, setIsSidebarOpen, isNonMobile
 }) => {
     const { pathname } = useLocation();
     const [active, setActive] = useState("");
@@ -181,6 +182,30 @@ const Sidebar: React.FC<SidebarProps> = ({
                             })}
                         </List>
                     </Box>
+                    <Box position='absolute' bottom='2rem'>
+                        <Divider />
+                        <FlexBetween
+                            textTransform={"none"} gap={"1rem"} m={"1.5rem 2rem 0 3rem"}>
+                            <Box
+                                component={"img"}
+                                alt='profile'
+                                src={profileImage}
+                                height={"40px"}
+                                width={"40px"}
+                                borderRadius={"50%"}
+                                sx={{ objectFit: 'cover' }} />
+                            <Box textAlign={'left'}>
+                                <Typography fontWeight={'bold'} fontSize={'0.9rem'} sx={{ color: theme.palette.secondary.light }}>
+                                    {user.name}
+                                </Typography>
+                                <Typography fontSize={'0.8rem'} sx={{ color: theme.palette.secondary.main }}>
+                                    {user.occupation}
+                                </Typography>
+                            </Box>
+                            <SettingsOutlined
+                                sx={{ color: theme.palette.secondary.main, fontSize: '25px' }} />
+                        </FlexBetween>
+                    </Box>
                 </Drawer>
             )}
         </Box>
@@ -188,3 +213,8 @@ const Sidebar: React.FC<SidebarProps> = ({
 }
 
 export default Sidebar
+
+interface User {
+    name?: string,
+    occupation?: string
+}
