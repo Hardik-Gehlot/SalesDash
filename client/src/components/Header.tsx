@@ -9,8 +9,7 @@ const Header:React.FC<HeaderProps> = ({title,subTitle}) => {
     sx={{ mb: '5px'}}>
         {title}
     </Typography>
-    <Typography variant='h5'
-    color={theme.palette.secondary.main}>
+    <Typography variant="h5" color={theme.palette.secondary.main}>
         {subTitle}
     </Typography>
   </Box>

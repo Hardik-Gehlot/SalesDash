@@ -10,10 +10,10 @@ import { config } from './config/config';
 
 
 //? data imports for importing data into database
-import User from './models/User';
-import Product from './models/Product';
-import ProductStat from './models/ProductStat';
-import { dataUser, dataProduct, dataProductStat } from './data';
+// import User from './models/User';
+// import Product from './models/Product';
+// import ProductStat from './models/ProductStat';
+// import { dataUser, dataProduct, dataProductStat } from './data';
 
 //! configuration
 const app = express();
