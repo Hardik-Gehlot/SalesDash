@@ -1,6 +1,14 @@
 import mongoose from "mongoose";
 
-const ProductSchema = new mongoose.Schema(
+interface IProduct{
+    name: string;
+    price: number;
+    description: string;
+    category: string;
+    rating: number;
+    supply: number;
+}
+const ProductSchema = new mongoose.Schema<IProduct>(
     {
         name: {
             type: String,
@@ -16,5 +24,5 @@ const ProductSchema = new mongoose.Schema(
         supply: Number
     }, { timestamps: true }
 );
-const Product = mongoose.model('Product', ProductSchema);
+const Product = mongoose.model<IProduct>('Product', ProductSchema);
 export default Product;

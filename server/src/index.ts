@@ -13,7 +13,8 @@ import { config } from './config/config';
 // import User from './models/User';
 // import Product from './models/Product';
 // import ProductStat from './models/ProductStat';
-// import { dataUser, dataProduct, dataProductStat } from './data';
+// import Transaction from './models/Transaction';
+// import { dataUser, dataProduct, dataProductStat, dataTransaction } from './data';
 
 //! configuration
 const app = express();
@@ -34,12 +35,13 @@ mongoose.connect(config.mongo.url)
     .then(() => {
         app.listen(config.server.port, () => {
             console.log("🚀 server listening on port:➡", config.server.port);
-            // User.insertMany(dataUser); Inserting data into database
-            // Product.insertMany(dataProduct).then(()=>{
-            //     console.log("💥 Products inserted successfully");
-            // }).catch(e=> console.log("❌ error"));
-            // ProductStat.insertMany(dataProductStat).then(()=>{
-            //     console.log("💥 ProductsStat inserted successfully");
+
+            //Inserting data to database
+            // User.insertMany(dataUser);
+            // Product.insertMany(dataProduct);
+            // ProductStat.insertMany(dataProductStat);
+            // Transaction.insertMany(dataTransaction).then(()=>{
+            //     console.log("💥 Transactions inserted successfully");
             // }).catch(e=> console.log("❌ error"));
         });
     })

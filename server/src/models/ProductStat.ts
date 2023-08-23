@@ -1,6 +1,24 @@
 import mongoose from "mongoose";
 
-const ProductStatSchema = new mongoose.Schema(
+interface IMonth {
+    month: string;
+    totalSales: number;
+    totalUnits: number;
+}
+interface IDay {
+    date: string;
+    totalSales: number;
+    totalUnits: number;
+}
+interface IProductStat {
+    productId: string;
+    yearlySalesTotal: number;
+    yearlyTotalSoldUnits: number
+    year: number;
+    monthlyData: IMonth[];
+    dailyData: IDay;
+}
+const ProductStatSchema = new mongoose.Schema<IProductStat>(
     {
         productId: {
             type: String,
@@ -23,5 +41,5 @@ const ProductStatSchema = new mongoose.Schema(
         }
     }, { timestamps: true }
 );
-const ProductStat = mongoose.model('ProductStat', ProductStatSchema);
+const ProductStat = mongoose.model<IProductStat>('ProductStat', ProductStatSchema);
 export default ProductStat;
