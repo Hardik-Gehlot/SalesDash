@@ -1,9 +1,3 @@
-// import ClientRoutes from "./ClientRoutes.js";
-// import GeneralRoutes from "./GeneralRoutes.js";
-// import ManagementRoutes from "./ManagementRoutes.js";
-// import SalesRoutes from "./SalesRoutes.js";
-// export {ClientRoutes, GeneralRoutes, SalesRoutes, ManagementRoutes}
-
 import express from 'express';
 import clientRouter from './ClientRoutes';
 import managementRouter from './ManagementRoutes';

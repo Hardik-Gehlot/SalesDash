@@ -4,7 +4,7 @@ import Header from "../../components/Header";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { useGetCustomersQuery } from "../../state/api";
 
-const Customers = () => {
+const Customers: React.FC = () => {
     const theme = useTheme();
     const { data, isLoading } = useGetCustomersQuery(1);
     console.log("data", data);

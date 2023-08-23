@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Box, useTheme } from "@mui/material";
 import { DataGrid, GridColDef, GridPaginationModel, GridRenderCellParams, GridSortModel } from "@mui/x-data-grid";
 import { useGetTransactionsQuery } from "../../state/api";

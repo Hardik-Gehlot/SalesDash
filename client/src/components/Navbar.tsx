@@ -27,7 +27,6 @@ import {
 interface NavbarProps {
     user: User,
     isSidebarOpen: boolean;
-    // setIsSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;
     setIsSidebarOpen: (val: boolean) => void;
 }
 

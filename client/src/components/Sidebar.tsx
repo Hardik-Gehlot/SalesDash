@@ -12,14 +12,12 @@ import {
 import { useLocation, useNavigate } from 'react-router-dom';
 import FlexBetween from './FlexBetween';
 import profileImage from '../assests/profile.jpg'
-import { text } from 'stream/consumers';
 
 interface SidebarProps {
     user: User,
     isNonMobile: boolean;
     drawerWidth: string;
     isSidebarOpen: boolean;
-    // setIsSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;
     setIsSidebarOpen: (val: boolean) => void;
 }
 interface NavItem {
