@@ -82,7 +82,7 @@ export const themeSettings = (mode: 'dark' | 'light') => {
           },
           secondary: {
             ...tokensDark.secondary,
-            main: tokensDark.secondary[300],
+            main: tokensDark.secondary[600],
             light: tokensDark.secondary[100],
           },
           neutral: {

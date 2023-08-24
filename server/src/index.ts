@@ -9,12 +9,13 @@ import { config } from './config/config';
 
 
 
-//? data imports for importing data into database
+//? data imports for inserting data into database
 // import User from './models/User';
 // import Product from './models/Product';
 // import ProductStat from './models/ProductStat';
 // import Transaction from './models/Transaction';
-// import { dataUser, dataProduct, dataProductStat, dataTransaction } from './data';
+// import OverallStat from './models/OverallStat';
+// import { dataUser, dataProduct, dataProductStat, dataTransaction,dataOverallStat } from './data';
 
 //! configuration
 const app = express();
@@ -36,12 +37,13 @@ mongoose.connect(config.mongo.url)
         app.listen(config.server.port, () => {
             console.log("🚀 server listening on port:➡", config.server.port);
 
-            //Inserting data to database
+            //!Inserting data to database only one time
             // User.insertMany(dataUser);
             // Product.insertMany(dataProduct);
             // ProductStat.insertMany(dataProductStat);
-            // Transaction.insertMany(dataTransaction).then(()=>{
-            //     console.log("💥 Transactions inserted successfully");
+            // Transaction.insertMany(dataTransaction);
+            // OverallStat.insertMany(dataOverallStat).then(()=>{
+            //     console.log("💥 Overall inserted successfully");
             // }).catch(e=> console.log("❌ error"));
         });
     })

@@ -16,7 +16,7 @@ interface IProductStat {
     yearlyTotalSoldUnits: number
     year: number;
     monthlyData: IMonth[];
-    dailyData: IDay;
+    dailyData: IDay[];
 }
 const ProductStatSchema = new mongoose.Schema<IProductStat>(
     {
@@ -34,11 +34,11 @@ const ProductStatSchema = new mongoose.Schema<IProductStat>(
                 totalUnits: Number
             }
         ],
-        dailyData: {
+        dailyData: [{
             date: String,
             totalSales: Number,
             totalUnits: Number
-        }
+        }]
     }, { timestamps: true }
 );
 const ProductStat = mongoose.model<IProductStat>('ProductStat', ProductStatSchema);

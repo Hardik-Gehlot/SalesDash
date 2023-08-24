@@ -1,9 +1,8 @@
-import express,{Request,Response,NextFunction,Router} from 'express';
+import { getSales } from '../controllers/Sales';
+import express,{Router} from 'express';
 
 const salesRoutes:Router = express.Router();
 
-salesRoutes.get('/', (req:Request, res:Response, next:NextFunction) => {
-  res.send('<h1>Sales Route 👨</h1>');
-});
+salesRoutes.get('/sales',getSales);
 
 export default salesRoutes;
