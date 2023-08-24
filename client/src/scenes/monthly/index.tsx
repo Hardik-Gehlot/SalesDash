@@ -1,23 +1,17 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo } from "react";
 import { Box, useTheme } from "@mui/material";
 import Header from "../../components/Header";
 import { ResponsiveLine } from "@nivo/line";
 import { useGetSalesQuery } from "../../state/api";
-import DatePicker from 'react-date-picker';
-import 'react-date-picker/dist/DatePicker.css';
 
-const Daily = () => {
-    type ValuePiece = Date | null;
-    type Value = ValuePiece | [ValuePiece, ValuePiece];
-    const [startDate, setStartDate] = useState<Value>(new Date("2021-02-01"));
-    const [endDate, setEndDate] = useState<Value>(new Date("2021-03-01"));
+const Monthly: React.FC = () => {
     const { data } = useGetSalesQuery(1);
     const theme = useTheme();
 
     const [formattedData] = useMemo(() => {
         if (!data) return [];
 
-        const { dailyData } = data;
+        const { monthlyData } = data;
         const totalSalesLine: ITotalDataLine = {
             id: "totalSales",
             color: theme.palette.secondary.main,
@@ -29,38 +23,18 @@ const Daily = () => {
             data: [],
         };
 
-        Object.values(dailyData as IDaily).forEach(({ date, totalSales, totalUnits }) => {
-            const dateFormatted = new Date(date);
-            if (!startDate || !endDate || (dateFormatted >= startDate && dateFormatted <= endDate)) {
-                const splitDate = date.substring(date.indexOf("-") + 1);
-
-                totalSalesLine.data.push({ x: splitDate, y: totalSales });
-                totalUnitsLine.data.push({ x: splitDate, y: totalUnits });
-            }
+        Object.values(monthlyData as IMonthly).forEach(({ month, totalSales, totalUnits }) => {
+            totalSalesLine.data.push({ x: month, y: totalSales });
+            totalUnitsLine.data.push({ x: month, y: totalUnits });
         });
 
         const formattedData = [[totalSalesLine, totalUnitsLine]];
         return formattedData;
-    }, [data, startDate, endDate]);
+    }, [data]);
     return (
         <Box m="1.5rem 2.5rem">
-            <Header title="DAILY SALES" subTitle="Chart of daily sales" />
+            <Header title="Monthly SALES" subTitle="Chart of monthly sales" />
             <Box height="75vh">
-                <Box display="flex" justifyContent="flex-end">
-                    <Box>
-                        <DatePicker
-                            onChange={setStartDate}
-                            value={startDate}
-                        />
-                    </Box>
-                    <Box>
-                        <DatePicker
-                            onChange={setEndDate}
-                            value={endDate}
-                        />
-                    </Box>
-                </Box>
-
                 {data ? (
                     <ResponsiveLine
                         data={formattedData}
@@ -115,42 +89,42 @@ const Daily = () => {
                             tickSize: 5,
                             tickPadding: 5,
                             tickRotation: 90,
-                            legend: 'Months',
+                            legend: "Month",
                             legendOffset: 60,
-                            legendPosition: 'middle'
+                            legendPosition: "middle",
                         }}
                         axisLeft={{
                             tickSize: 5,
                             tickPadding: 5,
                             tickRotation: 0,
-                            legend: 'Total',
+                            legend: "Total",
                             legendOffset: -50,
-                            legendPosition: 'middle'
+                            legendPosition: "middle",
                         }}
                         curve={'cardinal'}
                         colors={{ scheme: 'dark2' }}
-                        pointSize={4}
-                        pointColor={{ theme: 'background' }}
-                        pointBorderWidth={5}
-                        pointBorderColor={{ from: 'serieColor' }}
-                        pointLabelYOffset={10}
+                        pointSize={10}
+                        pointColor={{ theme: "background" }}
+                        pointBorderWidth={2}
+                        pointBorderColor={{ from: "serieColor" }}
+                        pointLabelYOffset={-12}
                         useMesh={true}
                         legends={[
                             {
-                                anchor: 'top-right',
-                                direction: 'column',
+                                anchor: "top-right",
+                                direction: "column",
                                 justify: false,
                                 translateX: 50,
                                 translateY: 0,
                                 itemsSpacing: 0,
-                                itemDirection: 'left-to-right',
+                                itemDirection: "left-to-right",
                                 itemWidth: 80,
                                 itemHeight: 20,
                                 itemOpacity: 0.75,
                                 symbolSize: 12,
-                                symbolShape: 'circle',
+                                symbolShape: "circle",
                                 itemTextColor: theme.palette.secondary.light,
-                                symbolBorderColor: 'rgba(0, 0, 0, .5)',
+                                symbolBorderColor: "rgba(0, 0, 0, .5)",
                                 effects: [
                                     {
                                         on: 'hover',
@@ -170,7 +144,7 @@ const Daily = () => {
     );
 };
 
-export default Daily;
+export default Monthly;
 
 interface ITotalDataLine {
     id: string;
@@ -182,7 +156,7 @@ interface DataPoint {
     x: string;
     y: number;
 }
-interface IDaily {
+interface IMonthly {
     date: string;
     totalSales: number;
     totalUnits: number;

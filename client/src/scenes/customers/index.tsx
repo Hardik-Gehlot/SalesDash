@@ -7,7 +7,6 @@ import { useGetCustomersQuery } from "../../state/api";
 const Customers: React.FC = () => {
     const theme = useTheme();
     const { data, isLoading } = useGetCustomersQuery(1);
-    console.log("data", data);
 
     const columns: GridColDef[] = [
         {
@@ -53,41 +52,44 @@ const Customers: React.FC = () => {
     return (
         <Box m="1.5rem 2.5rem">
             <Header title="CUSTOMERS" subTitle="List of Customers" />
-            <Box
-                mt="40px"
-                height="75vh"
-                sx={{
-                    "& .MuiDataGrid-root": {
-                        border: "none",
-                    },
-                    "& .MuiDataGrid-cell": {
-                        borderBottom: "none",
-                    },
-                    "& .MuiDataGrid-columnHeaders": {
-                        backgroundColor: theme.palette.background.paper,
-                        color: theme.palette.secondary.light,
-                        borderBottom: "none",
-                    },
-                    "& .MuiDataGrid-virtualScroller": {
-                        backgroundColor: theme.palette.primary.light,
-                    },
-                    "& .MuiDataGrid-footerContainer": {
-                        backgroundColor: theme.palette.background.paper,
-                        color: theme.palette.secondary.light,
-                        borderTop: "none",
-                    },
-                    "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
-                        color: `${theme.palette.secondary.main} !important`,
-                    },
-                }}
-            >
-                <DataGrid
-                    loading={isLoading || !data}
-                    getRowId={(row) => row._id}
-                    rows={data || []}
-                    columns = {columns}
-                />
-            </Box>
+            {data ?
+                <Box
+                    mt="40px"
+                    height="75vh"
+                    sx={{
+                        "& .MuiDataGrid-root": {
+                            border: "none",
+                        },
+                        "& .MuiDataGrid-cell": {
+                            borderBottom: "none",
+                        },
+                        "& .MuiDataGrid-columnHeaders": {
+                            backgroundColor: theme.palette.background.paper,
+                            color: theme.palette.secondary.light,
+                            borderBottom: "none",
+                        },
+                        "& .MuiDataGrid-virtualScroller": {
+                            backgroundColor: theme.palette.primary.light,
+                        },
+                        "& .MuiDataGrid-footerContainer": {
+                            backgroundColor: theme.palette.background.paper,
+                            color: theme.palette.secondary.light,
+                            borderTop: "none",
+                        },
+                        "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
+                            color: `${theme.palette.secondary.main} !important`,
+                        },
+                    }}
+                >
+                    <DataGrid
+                        loading={isLoading || !data}
+                        getRowId={(row) => row._id}
+                        rows={data || []}
+                        columns={columns}
+                    />
+                </Box>
+                : <>Loading...</>
+            }
         </Box>
     );
 };

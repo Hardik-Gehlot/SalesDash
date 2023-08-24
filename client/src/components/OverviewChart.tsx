@@ -139,13 +139,14 @@ const OverviewChart: React.FC<IOverviewChartProps> = ({ isDashboard = false, vie
                         itemOpacity: 0.75,
                         symbolSize: 12,
                         symbolShape: 'circle',
+                        itemTextColor: theme.palette.secondary.light,
                         symbolBorderColor: 'rgba(0, 0, 0, .5)',
                         effects: [
                             {
                                 on: 'hover',
                                 style: {
-                                    itemOpacity: 0.2,
-                                    itemTextColor: theme.palette.secondary.light,
+                                    itemOpacity: 1,
+                                    itemTextColor: theme.palette.secondary.main,
                                 }
                             }
                         ]
