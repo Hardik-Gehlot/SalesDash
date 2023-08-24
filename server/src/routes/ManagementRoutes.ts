@@ -1,9 +1,7 @@
-import express,{Request,Response,NextFunction,Router} from 'express';
-
+import express,{Router} from 'express';
+import {getAdmins} from '../controllers/Management'
 const managementRoutes:Router = express.Router();
 
-managementRoutes.get('/', (req:Request, res:Response, next:NextFunction) => {
-  res.send('<h1>Management Route 👨</h1>');
-});
+managementRoutes.get('/admins',getAdmins);
 
 export default managementRoutes;
