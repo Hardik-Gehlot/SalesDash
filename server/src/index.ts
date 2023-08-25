@@ -15,7 +15,8 @@ import { config } from './config/config';
 // import ProductStat from './models/ProductStat';
 // import Transaction from './models/Transaction';
 // import OverallStat from './models/OverallStat';
-// import { dataUser, dataProduct, dataProductStat, dataTransaction,dataOverallStat } from './data';
+// import AffiliateStat from './models/AffiliateStat';
+// import { dataUser, dataProduct, dataProductStat, dataTransaction,dataOverallStat,dataAffiliateStat } from './data';
 
 //! configuration
 const app = express();
@@ -42,8 +43,9 @@ mongoose.connect(config.mongo.url)
             // Product.insertMany(dataProduct);
             // ProductStat.insertMany(dataProductStat);
             // Transaction.insertMany(dataTransaction);
-            // OverallStat.insertMany(dataOverallStat).then(()=>{
-            //     console.log("💥 Overall inserted successfully");
+            // OverallStat.insertMany(dataOverallStat);
+            // AffiliateStat.insertMany(dataAffiliateStat).then(()=>{
+            //     console.log("💥 AffiliateStat inserted successfully");
             // }).catch(e=> console.log("❌ error"));
         });
     })
