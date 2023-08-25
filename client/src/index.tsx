@@ -20,6 +20,12 @@ setupListeners(store.dispatch);
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+document.title="Sales Dash";
+const link = document.createElement('link');
+link.type = 'image/x-icon';
+link.rel = 'shortcut icon';
+link.href = 'https://img.icons8.com/cotton/64/analytics.png';
+document.head.appendChild(link);
 root.render(
   <React.StrictMode>
     <Provider store={store}>
