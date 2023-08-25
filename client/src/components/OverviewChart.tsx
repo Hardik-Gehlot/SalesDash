@@ -49,7 +49,9 @@ const OverviewChart: React.FC<IOverviewChartProps> = ({ isDashboard = false, vie
     return (
         <ResponsiveLine
             data={view === 'sales' ? totalSalesLine : totalUnitsLine}
-            margin={{ top: 20, right: 110, bottom: 150, left: 70 }}
+            margin={isDashboard ? 
+                { top: 20, right: 50, bottom: 50, left: 70 } :
+                { top: 20, right: 110, bottom: 50, left: 70 }}
             theme={{
                 axis: {
                     domain: {
@@ -102,7 +104,7 @@ const OverviewChart: React.FC<IOverviewChartProps> = ({ isDashboard = false, vie
             axisBottom={{
                 tickSize: 5,
                 tickPadding: 5,
-                tickRotation: 0,
+                tickRotation: isDashboard ? -90 : 0,
                 legend: 'Months',
                 legendOffset: 36,
                 legendPosition: 'middle'
@@ -111,6 +113,7 @@ const OverviewChart: React.FC<IOverviewChartProps> = ({ isDashboard = false, vie
                 tickSize: 5,
                 tickPadding: 5,
                 tickRotation: 0,
+                tickValues: isDashboard ? 5 : 10,
                 legend: isDashboard ? '' : `Total ${view === 'sales' ? 'Revenue' : 'Units'} for Year`,
                 legendOffset: -60,
                 legendPosition: 'middle'

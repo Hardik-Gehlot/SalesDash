@@ -106,6 +106,9 @@ const Sidebar: React.FC<SidebarProps> = ({
                     anchor='left'
                     sx={{
                         width: drawerWidth,
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'space-between',
                         "& .MuiDrawer-paper": {
                             color: theme.palette.secondary.main,
                             backgroundColor: theme.palette.background.paper,
@@ -115,7 +118,7 @@ const Sidebar: React.FC<SidebarProps> = ({
                         }
                     }}
                 >
-                    <Box width='100%'>
+                    <Box width='100%' marginBottom={'50px'}>
                         <Box m='1.5rem 2rem 2rem 3rem'>
                             <FlexBetween color={theme.palette.secondary.main}>
                                 <Box display='flex' alignItems='center' gap='0.5rem'>
@@ -180,7 +183,7 @@ const Sidebar: React.FC<SidebarProps> = ({
                             })}
                         </List>
                     </Box>
-                    <Box position='absolute' bottom='2rem'>
+                    <Box marginBottom={'10px'}>
                         <Divider />
                         <FlexBetween
                             textTransform={"none"} gap={"1rem"} m={"1.5rem 2rem 0 3rem"}>

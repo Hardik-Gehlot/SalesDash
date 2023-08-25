@@ -114,6 +114,7 @@ const Daily = () => {
                         axisBottom={{
                             tickSize: 5,
                             tickPadding: 5,
+                            tickValues: 30,
                             tickRotation: 90,
                             legend: 'Months',
                             legendOffset: 60,
@@ -122,6 +123,7 @@ const Daily = () => {
                         axisLeft={{
                             tickSize: 5,
                             tickPadding: 5,
+                            tickValues: 10,
                             tickRotation: 0,
                             legend: 'Total',
                             legendOffset: -50,
